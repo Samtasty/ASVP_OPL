@@ -18,11 +18,6 @@ from policy.multiclass_policy import MulticlassPolicy
 
 import numpy as np
 from scipy.stats import norm
-from sklearn.datasets import load_svmlight_file
-from sklearn.model_selection import train_test_split
-from sklearn.random_projection import GaussianRandomProjection
-from sklearn.preprocessing import MultiLabelBinarizer, StandardScaler
-from sklearn.preprocessing import add_dummy_feature
 
 
 env_dico = {}
@@ -179,9 +174,9 @@ def split_method(method, total_samples, M, n_0, dataset):
     return [int(s) for s in list_samples if s > 0]
 
 dic_estimator = {
-    "mis": MultipleImportanceSamplingEstimator,
-    "is": ImportanceSamplingEstimator,
-    "sis": SequentialImportanceSamplingEstimator,
+    "osvp-pl": MultipleImportanceSamplingEstimator,
+    "crm": ImportanceSamplingEstimator,
+    "scrm": SequentialImportanceSamplingEstimator,
     "mixt": MixtureEstimator,
     "multi_mixt": MultiMixtureEstimator,
     "r_mixt": RandomMixtureEstimator,

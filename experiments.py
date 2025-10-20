@@ -30,11 +30,7 @@ from utils.loader import (
     verify_settings,
     assessing_list_samples,
 )
-from estimator.mixture_estimator import MixtureEstimator
-from estimator.is_estimator import ImportanceSamplingEstimator
-from estimator.mis_estimator import MultipleImportanceSamplingEstimator
-from estimator.sis_estimator import SequentialImportanceSamplingEstimator
-from estimator.multi_mixt_estimator import MultiMixtureEstimator
+
 from utils.logger import LossHistory
 from utils.utils import make_baselines_skylines
 from sklearn.linear_model import LogisticRegression
@@ -78,7 +74,6 @@ def experiment(args):
 
     print("Split sizes:", list_of_samples)
     print("Total requested:", sum(list_of_samples))
-    print("Available samples:", env.n_samples)
 
     display_experiment(
         settings["seed"],
@@ -198,7 +193,7 @@ def experiment(args):
         # Debug: show context_modelling output for first 5 test samples
 
         # add the new policy to the list of policies used in the environment
-        if settings["estimator"] == "is":
+        if settings["estimator"] == "crm":
             env.add_policy(behavior_policy)
         else:
             env.add_policy(new_policy)
@@ -277,8 +272,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--estimator",
         nargs="?",
-        default="mis",
-        choices=["mis", "mixt", "is", "sis", "multi_mixt", "r_mixt", "sr_mixt"],
+        default="osvp-pl",
+        choices=[ "mixt", "crm", "scrm", "osvp-pl", "multi_mixt", "r_mixt", "sr_mixt"],
         help="estimator type",
     )
     parser.add_argument(

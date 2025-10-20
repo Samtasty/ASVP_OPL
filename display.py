@@ -57,7 +57,7 @@ def compare_estimators(results, dataset_name, args, estimators=None):
     """
     Run a_posteriori_experiments for each estimator, plot them, and append performances.
     """
-    all_estimators = ["is", "sis", "mis", "mixt", "multi_mixt", "r_mixt", "sr_mixt"]
+    all_estimators = ["crm", "scrm", "osvp-pl", "mixt", "multi_mixt", "r_mixt", "sr_mixt"]
     estimators = estimators or all_estimators
 
     losses_dict, stds_dict = {}, {}
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     parser.add_argument("--policy_type", default="discrete",
                         choices=["discrete", "continuous", "multiclass"], help="policy type")
     parser.add_argument("--estimators", nargs='+', default=None,
-                        choices=["is","sis","mis","mixt","multi_mixt","r_mixt","sr_mixt"],
+                        choices=["crm", "scrm", "osvp-pl","mixt","multi_mixt","r_mixt","sr_mixt"],
                         help="Which estimators to run; if omitted, all will be tested")
     parser.add_argument("--datasets", nargs='+', default=None,
                          help="Which datasets to run; if omitted, defaults based on policy_type")

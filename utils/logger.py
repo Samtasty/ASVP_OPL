@@ -28,7 +28,7 @@ class LossHistory(object):
     def show_last(self):
         print(
             '<', self.name,
-            'CRM loss: %.5f' % self.crm_loss[-1],
+            'IPW loss: %.5f' % self.crm_loss[-1],
             'Online loss: %.5f' % self.online_loss[-1],
             '|theta|=%.2f' % np.sqrt((self.betas[-1] ** 2).sum()),
             'n=%d' % sum(self.n_samples[:-1]),
